@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.jsoneditor {
+  @apply border-none;
+}
+
+.jsoneditor-menu {
+  @apply bg-primary p-3 pl-6 h-14;
+}
+
+.jsoneditor-search {
+  @apply top-2 right-4 flex items-center font-avenir;
+}
+
+.jsoneditor-results {
+  @apply font-avenir mr-2;
+}
+
+.jsoneditor-frame {
+  @apply rounded p-1 flex items-center;
+}
+
+.jsoneditor-treepath {
+  @apply font-avenir;
+}
+
+.jsoneditor-treepath .jsoneditor-treepath-element {
+  @apply font-avenir;
+}
+
+.jsoneditor-contextmenu .jsoneditor-menu {
+  @apply rounded;
+}
+
+.jsoneditor .jsoneditor-menu > .jsoneditor-modes button {
+  @apply font-avenir;
+}
+
+.jsoneditor-contextmenu .jsoneditor-menu button {
+  @apply font-avenir;
+}
+
+.jsoneditor .jsoneditor-menu > .jsoneditor-modes button {
+  @apply font-avenir;
+}
+
+.jsoneditor-menu .jsoneditor-poweredBy {
+  display: none;
+}
+
+.jsoneditor .ace_tooltip {
+  display: none !important;
+}

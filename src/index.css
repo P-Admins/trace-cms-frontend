@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Avenir';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./theme/fonts/Avenir/Avenir-Roman.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Avenir';
+  font-style: light;
+  font-weight: 300;
+  font-display: swap;
+  src: url('./theme/fonts/Avenir/Avenir-Light.ttf') format('truetype');
+}
+
+@layer base {
+  html {
+    font-family: 'Avenir', system-ui, sans-serif;
+  }
+
+  h1 {
+    @apply text-6xl font-extrabold;
+  }
+
+  h2 {
+    @apply text-5xl font-extrabold;
+  }
+
+  h3 {
+    @apply text-4xl font-extrabold;
+  }
+
+  h4 {
+    @apply text-3xl font-extrabold;
+  }
+
+  h5 {
+    @apply text-3xl font-medium;
+  }
+
+  h6 {
+    @apply text-xl font-medium;
+  }
+}
