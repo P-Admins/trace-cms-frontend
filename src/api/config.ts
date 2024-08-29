@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://appsvc-eaus-api-dev.azurewebsites.net';
+const API_URL = 'https://appsvc-eastus-api-dev-fzepdseua9bjhkdv.eastus-01.azurewebsites.net';
 const axiosInstance = axios.create({
   baseURL: import.meta.env.DEV ? '/api' : API_URL,
   withCredentials: true,

@@ -135,9 +135,11 @@ export default function PreviewAssetModal({
                       camera-controls
                       touch-action="pan-y"
                       style={{
-                        minHeight: '70vh',
+                        minHeight: '50vh',
                         width: '100%',
                         visibility: displayJsonEditor ? 'hidden' : 'visible',
+                        background:
+                          'radial-gradient(circle, #ffffff 50%, rgba(222, 222, 222, 1) 100%)',
                       }}
                       crossOrigin="use-credentials"
                     ></model-viewer>

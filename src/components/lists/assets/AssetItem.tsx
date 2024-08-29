@@ -101,7 +101,7 @@ export default function AssetItem({
         onOpenChange={(open) => setIsDropdownOpen(open)}
       >
         <div
-          className="relative rounded-xl h-[272px] w-[272px] cursor-pointer bg-white-gradient"
+          className="relative rounded-xl h-[272px] w-[272px] [@media(max-width:1824px)]:w-[224px] [@media(max-width:1824px)]:h-[224px] cursor-pointer bg-white-gradient"
           onClick={onClick}
         >
           <div className="absolute">

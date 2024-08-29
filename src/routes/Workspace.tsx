@@ -66,7 +66,7 @@ export default function Workspace() {
   };
 
   return (
-    <div className="grow flex flex-col ml-12 mr-4 my-5">
+    <div className="grow flex flex-col mx-12 my-5">
       <WorkspaceTitle text="My Workspace" className="mt-14" />
       {isGetFoldersLoading ? (
         <TextSkeleton />

@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://appsvc-eaus-api-dev.azurewebsites.net',
+        target: 'https://appsvc-eastus-api-dev-fzepdseua9bjhkdv.eastus-01.azurewebsites.net',
         changeOrigin: true,
         secure: true,
         rewrite: (path) => path.replace(/^\/api/, ''),

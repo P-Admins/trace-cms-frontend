@@ -11,7 +11,7 @@ export default function CreateNewAssetItemButton({ onClick, className = '' }: Pr
     <Button
       onClick={onClick}
       size="lg"
-      className={`relative text-lg bg-white w-[272px] h-[272px] rounded-xl flex flex-col justify-center backdrop-blur-[37px] gap-5 ${className}`}
+      className={`relative text-lg bg-white w-[272px] h-[272px] [@media(max-width:1824px)]:w-[224px] [@media(max-width:1824px)]:h-[224px] rounded-xl flex flex-col justify-center backdrop-blur-[37px] gap-5 ${className}`}
     >
       <div className="grow-1">
         <AddIcon fill="#293038" width={50} height={50} />

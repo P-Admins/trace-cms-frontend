@@ -48,7 +48,7 @@ export default function InviteToTeamModal({
   const queryClient = useQueryClient();
 
   const [selectedPermissionKeys, setSelectedPermissionKeys] = useState<Selection>(
-    new Set([TeamRole.VIEWER])
+    new Set([TeamRole.EDITOR])
   );
   const [emails, setEmails] = useState<string>('');
   const [existingMembers, setExistingMembers] = useState<(TeamMember & { isUpdated?: boolean })[]>(
@@ -144,7 +144,7 @@ export default function InviteToTeamModal({
     setExistingMembers(members);
 
     return () => {
-      setSelectedPermissionKeys(new Set([TeamRole.VIEWER]));
+      setSelectedPermissionKeys(new Set([TeamRole.EDITOR]));
       setEmails('');
       setAddedMembers([]);
       setMemberError('');

@@ -67,10 +67,10 @@ export default function ShareFolderModal({
 }: Props) {
   const [selectedMemberType, setSelectedMemberType] = useState<string | null | number>('email');
   const [selectedPermissionKeys, setSelectedPermissionKeys] = useState<Selection>(
-    new Set([FolderPermission.VIEWER])
+    new Set([FolderPermission.EDITOR])
   );
   const [selectedTeamPermissionKeys, setSelectedTeamPermissionKeys] = useState<Selection>(
-    new Set([FolderPermission.VIEWER])
+    new Set([FolderPermission.EDITOR])
   );
   const [emails, setEmails] = useState<string>('');
   const [addedEmails, setAddedEmails] = useState<{ email: string; role: FolderPermission }[]>([]);
@@ -352,8 +352,8 @@ export default function ShareFolderModal({
 
   useEffect(() => {
     return () => {
-      setSelectedPermissionKeys(new Set([FolderPermission.VIEWER]));
-      setSelectedTeamPermissionKeys(new Set([FolderPermission.VIEWER]));
+      setSelectedPermissionKeys(new Set([FolderPermission.EDITOR]));
+      setSelectedTeamPermissionKeys(new Set([FolderPermission.EDITOR]));
       setEmails('');
       setAddedEmails([]);
       setEmailError('');

@@ -87,7 +87,7 @@ function FolderShareInfo({ currentUserId, currentTeamId, users, teams }: Props) 
           />
         ))}
       </AvatarGroup>
-      <p className="text-sm text-primary-900 max-w-96 line-clamp-2">
+      <p className="text-sm text-primary-900 max-w-96 line-clamp-2 leading-4">
         {owners.length > 0 && `Owned by ${parseUserAndTeamList(owners)}. `}
         {editorsAndViewers.length > 0 && `Shared with ${parseUserAndTeamList(editorsAndViewers)}.`}
       </p>

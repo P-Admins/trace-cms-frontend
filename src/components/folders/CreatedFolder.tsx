@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { DropdownTrigger, DropdownItem, Tooltip } from '@nextui-org/react';
 import { Folder } from '@/types/Folder';
+import useHasTextOverflow from '@/hooks/useHasTextOverflow';
 import DropdownMenuStyled from '@components/dropdown/DropdownMenuStyled';
 import FolderIcon from '@icons/Folder.svg?react';
 import MoreIcon from '@icons/ThreeDots.svg?react';
@@ -37,6 +38,8 @@ export default function CreatedFolder({
   onFolderActionClick = () => {},
   enableFolderActions,
 }: Props) {
+  const textRef = useRef<HTMLParagraphElement>(null);
+  const hasEllipsis = useHasTextOverflow(textRef, folder.title);
   const [isHovered, setIsHovered] = useState(false);
 
   const getFolderIcon = (): React.ReactNode => {
@@ -54,7 +57,12 @@ export default function CreatedFolder({
 
   return (
     <DropdownWrapper>
-      <Tooltip color="foreground" placement="top" content={folder.title}>
+      <Tooltip
+        color="foreground"
+        placement="top"
+        content={folder.title}
+        isOpen={isHovered && hasEllipsis}
+      >
         <div
           onClick={() => onClick(folder.folderId)}
           onMouseEnter={() => setIsHovered(true)}
@@ -64,6 +72,7 @@ export default function CreatedFolder({
           <div className="flex h-full w-[calc(100%-29px)] items-center gap-2 py-3.5 pl-3.5">
             <div>{getFolderIcon()}</div>
             <p
+              ref={textRef}
               className={`text-sm line-clamp-1 break-all ${isActive ? 'text-content1' : 'text-default-800'}`}
             >
               {folder.title}
@@ -71,7 +80,7 @@ export default function CreatedFolder({
           </div>
           {enableFolderActions && (
             <DropdownTrigger>
-              <div className="h-full flex flex-col justify-center">
+              <div className="h-full flex flex-col justify-center mr-1">
                 {isActive ? (
                   <MoreIcon width={24} height={24} color="white" />
                 ) : isHovered ? (

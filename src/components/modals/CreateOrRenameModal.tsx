@@ -37,6 +37,9 @@ export default function CreateOrRenameModal({
       isOpen={isOpen}
       onOpenChange={onOpenChange}
       onClose={onClose}
+      classNames={{
+        header: ['justify-center'],
+      }}
       footer={
         <PrimaryGradientButton
           text="Confirm"

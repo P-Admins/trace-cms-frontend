@@ -57,7 +57,7 @@ export default function EditTeamModal({
   const [teamName, setTeamName] = useState('');
   const [teamNameError, setTeamNameError] = useState('');
   const [selectedPermissionKeys, setSelectedPermissionKeys] = useState<Selection>(
-    new Set([TeamRole.VIEWER])
+    new Set([TeamRole.EDITOR])
   );
   const [emails, setEmails] = useState<string>('');
   const [existingMembers, setExistingMembers] = useState<TeamMember[]>([]);
@@ -204,7 +204,7 @@ export default function EditTeamModal({
 
     return () => {
       setTeamNameError('');
-      setSelectedPermissionKeys(new Set([TeamRole.VIEWER]));
+      setSelectedPermissionKeys(new Set([TeamRole.EDITOR]));
       setEmails('');
       setAddedMembers([]);
       setMemberError('');

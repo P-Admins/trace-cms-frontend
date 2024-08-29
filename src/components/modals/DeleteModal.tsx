@@ -28,6 +28,9 @@ export default function DeleteModal({
       title={title}
       isOpen={isOpen}
       onOpenChange={onOpenChange}
+      classNames={{
+        header: ['justify-center'],
+      }}
       footer={
         <>
           <WhiteButton text="Cancel" className="w-full" onClick={onClose} isDisabled={isLoading} />
@@ -40,7 +43,7 @@ export default function DeleteModal({
         </>
       }
     >
-      <p className="text-left">{message}</p>
+      <p>{message}</p>
       {!!additionalMessage && <p className="text-left">{additionalMessage}</p>}
     </BasicModal>
   );
