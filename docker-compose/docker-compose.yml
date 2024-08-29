@@ -1,8 +1,0 @@
-version: '3.8'
-
-services:
-  tracecms.web:
-    image: ${DOCKER_REGISTRY-}tracecms-web
-    build:
-      context: ../
-      dockerfile: Dockerfile
