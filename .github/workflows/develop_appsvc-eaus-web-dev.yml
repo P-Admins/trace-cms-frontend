@@ -23,15 +23,23 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://acreausdev.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_035b8b4b6e6b47ffa3331a1013623b67 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_4bb4b831c55a401283766be578f60075 }}
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
 
+    - name: Get current date
+      id: getdate
+      run: | 
+        echo "date=$(date +'%Y%m%d')" >> $GITHUB_OUTPUT
+      
     - name: Build and push container image to registry
-      uses: docker/build-push-action@v3
-      with:
-        push: true
-        tags: acreausdev.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_035b8b4b6e6b47ffa3331a1013623b67 }}/tracecms-web:${{ github.sha }}
-        file: ./Dockerfile
+      id: build-and-push-image
+      working-directory: ./
+      env: 
+        AZ_REGISTRY: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+        IMAGE_TAG: tracecms-web:${{ steps.getdate.outputs.date }}.${{ github.run_attempt }}
+      run: |
+        docker build -t $AZ_REGISTRY/$IMAGE_TAG -f ./configurations/docker/api/Dockerfile .
+        docker push $AZ_REGISTRY/$IMAGE_TAG
 
   deploy:
     runs-on: ubuntu-latest
@@ -47,5 +55,5 @@ jobs:
       with:
         app-name: 'appsvc-eaus-web-dev'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_d7e127dba017443da8df541051e54c4f }}
-        images: 'acreausdev.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_035b8b4b6e6b47ffa3331a1013623b67 }}/tracecms-web:${{ github.sha }}'
+        publish-profile: ${{ secrets.AZURE_APP_PROFILE }}
+        images: acreausdev.azurecr.io/tracecms-web:${{ steps.getdate.outputs.date }}.${{ github.run_attempt }}
